@@ -11,7 +11,7 @@ function isObject(object: any) {
 }
 
 const { keys } = Object;
-export default function deserialize(obj: {
+export default function flatten(obj: {
   [key: string]: any;
 }): { [key: string]: any } {
   if (!isObject(obj)) {

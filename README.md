@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import { serialize, deserialize } from 'nest-deep';
+import { nested, flatten } from 'nest-deep';
 
 const render = (object, id) =>
   (document.getElementById(id).innerHTML = JSON.stringify(
@@ -13,17 +13,17 @@ const render = (object, id) =>
   ));
 
 render(
-  serialize({
+  nested({
     'a.b': 1,
     'c.d[0][0]': 1,
     'c.d[1]': 5,
     'c.d[2]': 12,
   }),
-  'serialize'
+  'nested'
 );
 
 render(
-  deserialize({
+  flatten({
     a: {
       b: 1,
     },
@@ -31,6 +31,6 @@ render(
       d: [[1], 5, 12],
     },
   }),
-  'deserialize'
+  'flatten'
 );
 ```

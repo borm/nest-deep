@@ -1,2 +1,2 @@
-export { default as serialize } from './serialize';
-export { default as deserialize } from './deserialize';
+export { default as nested } from './nested';
+export { default as flatten } from './flatten';
