@@ -3,7 +3,7 @@
 ## Usage
 
 ```js
-import {serialize, deserialize} from 'nest-deep';
+import { serialize, deserialize } from 'nest-deep';
 
 const render = (object, id) =>
   (document.getElementById(id).innerHTML = JSON.stringify(

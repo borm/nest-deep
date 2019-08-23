@@ -1,7 +1,7 @@
 {
   "name": "nest-deep",
-  "description": "nest-deep",
-  "version": "1.0.1",
+  "description": "A utility library to convert between nested and flattened objects.",
+  "version": "1.0.2",
   "main": "./lib/index.js",
   "devDependencies": {
     "@babel/cli": "^7.5.5",
