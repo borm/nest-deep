@@ -1,0 +1,58 @@
+{
+  "name": "nest-deep",
+  "description": "nest-deep",
+  "version": "1.0.0",
+  "main": "./lib/index.js",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "@babel/runtime": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "cross-env": "^5.2.0",
+    "prettier": "^1.18.2",
+    "rimraf": "^2.6.3",
+    "ts-loader": "^6.0.4",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.8.0"
+  },
+  "scripts": {
+    "dev": "NODE_PATH=. webpack-dev-server",
+    "dev:open": "NODE_PATH=. webpack-dev-serve --open",
+    "clean": "./node_modules/.bin/rimraf lib dist",
+    "build": "npm run clean && npm run build:ts && npm run build:umd && npm run build:umd:min",
+    "build:ts": "tsc -esModuleInterop true --moduleResolution node -t ES6 -m UMD --outDir ./lib --sourceMap false --jsx react ./src/index.ts",
+    "build:umd": "cross-env NODE_ENV=development webpack",
+    "build:umd:min": "cross-env NODE_ENV=production webpack",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/borm/nest-deep.git"
+  },
+  "bugs": {
+    "url": "https://github.com/borm/nest-deep/issues"
+  },
+  "author": "borm",
+  "license": "MIT",
+  "files": [
+    "README.md",
+    "lib",
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "hooks",
+    "form"
+  ],
+  "npmName": "nest-deep",
+  "homepage": "https://github.com/borm/nest-deep#readme"
+}
