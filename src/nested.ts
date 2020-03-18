@@ -5,8 +5,8 @@ type SerializerObjectType = {
 };
 
 type ResultArrayType =
-  | Array<ResultObjectType | ValueType>
-  | Array<Array<ResultObjectType | ValueType>>;
+  | (ResultObjectType | ValueType)[]
+  | (ResultObjectType | ValueType)[][];
 
 interface ResultObjectType {
   [key: string]: ValueType | ResultObjectType | ResultArrayType;
