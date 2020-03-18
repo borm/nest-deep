@@ -1,6 +1,6 @@
 'use strict';
 import path from 'path';
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 
 const env = process.env.NODE_ENV || 'development';
 const isDev = env === 'development';
@@ -51,6 +51,18 @@ export default {
     ],
   },
   optimization: {
-    minimizer: [new UglifyJsPlugin()],
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            // Drop console statements
+            drop_console: true,
+            // remove debugger; statements
+            drop_debugger: true,
+          },
+        },
+      }),
+    ],
   },
 };

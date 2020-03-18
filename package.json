@@ -1,8 +1,8 @@
 {
   "name": "nest-deep",
   "description": "A utility library to convert between nested and flattened objects.",
-  "version": "1.1.1",
-  "main": "./lib/index.js",
+  "version": "1.1.2",
+  "main": "./dist/index.js",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.7",
@@ -16,13 +16,13 @@
     "cross-env": "^5.2.1",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.2",
+    "terser-webpack-plugin": "^2.3.5",
     "ts-loader": "^6.2.1",
     "tslint": "^6.1.0",
     "typescript": "^3.8.3",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.8.0"
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "scripts": {
     "dev": "NODE_PATH=. webpack-dev-server",
@@ -30,6 +30,7 @@
     "clean": "./node_modules/.bin/rimraf lib dist",
     "build": "npm run clean && npm run build:ts && npm run build:umd && npm run build:umd:min",
     "build:ts": "tsc -esModuleInterop true --moduleResolution node -t ES6 -m UMD --outDir ./lib --sourceMap false --jsx react ./src/index.ts",
+    "build:tsc": "tsc -m commonjs --outDir ./lib --sourceMap false --jsx react ./src/index.ts",
     "build:umd": "cross-env NODE_ENV=development webpack",
     "build:umd:min": "cross-env NODE_ENV=production webpack",
     "prepublish": "npm run build"
@@ -49,9 +50,14 @@
     "dist"
   ],
   "keywords": [
-    "react",
-    "hooks",
-    "form"
+    "deep",
+    "nested",
+    "flatten",
+    "typescript",
+    "javascript",
+    "json",
+    "object",
+    "array"
   ],
   "npmName": "nest-deep",
   "homepage": "https://github.com/borm/nest-deep#readme"
