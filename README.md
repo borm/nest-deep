@@ -1,36 +1,46 @@
-# nest-deep 
+# nest-deep
 
 ## Usage
-
 ```js
 import { nested, flatten } from 'nest-deep';
 
-const render = (object, id) =>
-  (document.getElementById(id).innerHTML = JSON.stringify(
-    object,
-    undefined,
-    2
-  ));
+nested({
+  'a.b': 1,
+  'c.d[0][0]': 1,
+  'c.d[1]': 5,
+  'c.d[2]': 12,
+});
 
-render(
-  nested({
-    'a.b': 1,
-    'c.d[0][0]': 1,
-    'c.d[1]': 5,
-    'c.d[2]': 12,
-  }),
-  'nested'
-);
+flatten({
+  a: {
+    b: 1,
+  },
+  c: {
+    d: [[1], 5, 12],
+  },
+});
+```
 
-render(
-  flatten({
-    a: {
-      b: 1,
-    },
-    c: {
-      d: [[1], 5, 12],
-    },
-  }),
-  'flatten'
-);
+## Output
+
+##### nested
+```json
+{
+  "a": {
+    "b": 1
+  },
+  "c": {
+    "d": [[1], 5, 12]
+  }
+}
+```
+
+##### flatten
+```json
+{
+  "a.b": 1,
+  "c.d[0][0]": 1,
+  "c.d[1]": 5,
+  "c.d[2]": 12
+}
 ```
