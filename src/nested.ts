@@ -18,17 +18,17 @@ export default function nested(object: SerializerObjectType = null): ResultObjec
   }
   const regex = /\.?([^.\[\]]+)|\[(\d+)\]/g;
   const result: ResultObjectType = {};
-  // tslint:disable-next-line:forin
-  for (const p in object) {
+  const keys = Object.keys(object).sort();
+  for (const key of keys) {
     let cur = result;
     let prop = '';
     let m;
     // tslint:disable-next-line:no-conditional-assignment
-    while (m = regex.exec(p)) {
+    while (m = regex.exec(key)) {
       cur = cur[prop] || (cur[prop] = (m[2] ? [] : {}));
       prop = m[2] || m[1];
     }
-    cur[prop] = object[p];
+    cur[prop] = object[key];
   }
   return result[''] || result;
 }

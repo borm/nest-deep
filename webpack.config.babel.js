@@ -51,7 +51,7 @@ export default {
     ],
   },
   optimization: {
-    minimize: true,
+    minimize: !isDev,
     minimizer: [
       new TerserPlugin({
         terserOptions: {

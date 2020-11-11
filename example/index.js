@@ -10,8 +10,11 @@ const render = (object, id) =>
 
 render(
   nested({
-    'a.b': 1,
+    'a': 1,
+    'b[0]': 'red',
+    'b': [],
     'c.d[0][0]': 1,
+    'c.d[0]': [2, 3],
     'c.d[1]': 5,
     'c.d[2]': 12,
   }),
